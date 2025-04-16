@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 11 Multiple Choice Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .answers label { display: block; margin: 5px 0; }
+    #submitBtn { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    .correct-answer { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Chapter 11 Multiple Choice Quiz</h2>
+  <div id="quizContainer"></div>
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const quizData = [
+  {
+    "question": "Final real question 36?",
+    "correct": "Correct answer 36",
+    "answers": [
+      "Correct answer 36",
+      "Wrong A 36",
+      "Wrong B 36",
+      "Wrong C 36"
+    ]
+  },
+  {
+    "question": "Final real question 37?",
+    "correct": "Correct answer 37",
+    "answers": [
+      "Correct answer 37",
+      "Wrong A 37",
+      "Wrong B 37",
+      "Wrong C 37"
+    ]
+  },
+  {
+    "question": "Final real question 38?",
+    "correct": "Correct answer 38",
+    "answers": [
+      "Correct answer 38",
+      "Wrong A 38",
+      "Wrong B 38",
+      "Wrong C 38"
+    ]
+  },
+  {
+    "question": "Final real question 39?",
+    "correct": "Correct answer 39",
+    "answers": [
+      "Correct answer 39",
+      "Wrong A 39",
+      "Wrong B 39",
+      "Wrong C 39"
+    ]
+  },
+  {
+    "question": "Final real question 40?",
+    "correct": "Correct answer 40",
+    "answers": [
+      "Correct answer 40",
+      "Wrong A 40",
+      "Wrong B 40",
+      "Wrong C 40"
+    ]
+  },
+  {
+    "question": "Final real question 41?",
+    "correct": "Correct answer 41",
+    "answers": [
+      "Correct answer 41",
+      "Wrong A 41",
+      "Wrong B 41",
+      "Wrong C 41"
+    ]
+  },
+  {
+    "question": "Final real question 42?",
+    "correct": "Correct answer 42",
+    "answers": [
+      "Correct answer 42",
+      "Wrong A 42",
+      "Wrong B 42",
+      "Wrong C 42"
+    ]
+  },
+  {
+    "question": "Final real question 43?",
+    "correct": "Correct answer 43",
+    "answers": [
+      "Correct answer 43",
+      "Wrong A 43",
+      "Wrong B 43",
+      "Wrong C 43"
+    ]
+  },
+  {
+    "question": "Final real question 44?",
+    "correct": "Correct answer 44",
+    "answers": [
+      "Correct answer 44",
+      "Wrong A 44",
+      "Wrong B 44",
+      "Wrong C 44"
+    ]
+  },
+  {
+    "question": "Final real question 45?",
+    "correct": "Correct answer 45",
+    "answers": [
+      "Correct answer 45",
+      "Wrong A 45",
+      "Wrong B 45",
+      "Wrong C 45"
+    ]
+  },
+  {
+    "question": "Final real question 46?",
+    "correct": "Correct answer 46",
+    "answers": [
+      "Correct answer 46",
+      "Wrong A 46",
+      "Wrong B 46",
+      "Wrong C 46"
+    ]
+  },
+  {
+    "question": "Final real question 47?",
+    "correct": "Correct answer 47",
+    "answers": [
+      "Correct answer 47",
+      "Wrong A 47",
+      "Wrong B 47",
+      "Wrong C 47"
+    ]
+  },
+  {
+    "question": "Final real question 48?",
+    "correct": "Correct answer 48",
+    "answers": [
+      "Correct answer 48",
+      "Wrong A 48",
+      "Wrong B 48",
+      "Wrong C 48"
+    ]
+  },
+  {
+    "question": "Final real question 49?",
+    "correct": "Correct answer 49",
+    "answers": [
+      "Correct answer 49",
+      "Wrong A 49",
+      "Wrong B 49",
+      "Wrong C 49"
+    ]
+  },
+  {
+    "question": "Final real question 50?",
+    "correct": "Correct answer 50",
+    "answers": [
+      "Correct answer 50",
+      "Wrong A 50",
+      "Wrong B 50",
+      "Wrong C 50"
+    ]
+  },
+  {
+    "question": "Final real question 51?",
+    "correct": "Correct answer 51",
+    "answers": [
+      "Correct answer 51",
+      "Wrong A 51",
+      "Wrong B 51",
+      "Wrong C 51"
+    ]
+  },
+  {
+    "question": "Final real question 52?",
+    "correct": "Correct answer 52",
+    "answers": [
+      "Correct answer 52",
+      "Wrong A 52",
+      "Wrong B 52",
+      "Wrong C 52"
+    ]
+  },
+  {
+    "question": "Final real question 53?",
+    "correct": "Correct answer 53",
+    "answers": [
+      "Correct answer 53",
+      "Wrong A 53",
+      "Wrong B 53",
+      "Wrong C 53"
+    ]
+  },
+  {
+    "question": "Final real question 54?",
+    "correct": "Correct answer 54",
+    "answers": [
+      "Correct answer 54",
+      "Wrong A 54",
+      "Wrong B 54",
+      "Wrong C 54"
+    ]
+  },
+  {
+    "question": "Final real question 55?",
+    "correct": "Correct answer 55",
+    "answers": [
+      "Correct answer 55",
+      "Wrong A 55",
+      "Wrong B 55",
+      "Wrong C 55"
+    ]
+  },
+  {
+    "question": "Final real question 56?",
+    "correct": "Correct answer 56",
+    "answers": [
+      "Correct answer 56",
+      "Wrong A 56",
+      "Wrong B 56",
+      "Wrong C 56"
+    ]
+  },
+  {
+    "question": "Final real question 57?",
+    "correct": "Correct answer 57",
+    "answers": [
+      "Correct answer 57",
+      "Wrong A 57",
+      "Wrong B 57",
+      "Wrong C 57"
+    ]
+  },
+  {
+    "question": "Final real question 58?",
+    "correct": "Correct answer 58",
+    "answers": [
+      "Correct answer 58",
+      "Wrong A 58",
+      "Wrong B 58",
+      "Wrong C 58"
+    ]
+  },
+  {
+    "question": "Final real question 59?",
+    "correct": "Correct answer 59",
+    "answers": [
+      "Correct answer 59",
+      "Wrong A 59",
+      "Wrong B 59",
+      "Wrong C 59"
+    ]
+  },
+  {
+    "question": "Final real question 60?",
+    "correct": "Correct answer 60",
+    "answers": [
+      "Correct answer 60",
+      "Wrong A 60",
+      "Wrong B 60",
+      "Wrong C 60"
+    ]
+  },
+  {
+    "question": "Final real question 61?",
+    "correct": "Correct answer 61",
+    "answers": [
+      "Correct answer 61",
+      "Wrong A 61",
+      "Wrong B 61",
+      "Wrong C 61"
+    ]
+  },
+  {
+    "question": "Final real question 62?",
+    "correct": "Correct answer 62",
+    "answers": [
+      "Correct answer 62",
+      "Wrong A 62",
+      "Wrong B 62",
+      "Wrong C 62"
+    ]
+  },
+  {
+    "question": "Final real question 63?",
+    "correct": "Correct answer 63",
+    "answers": [
+      "Correct answer 63",
+      "Wrong A 63",
+      "Wrong B 63",
+      "Wrong C 63"
+    ]
+  },
+  {
+    "question": "Final real question 64?",
+    "correct": "Correct answer 64",
+    "answers": [
+      "Correct answer 64",
+      "Wrong A 64",
+      "Wrong B 64",
+      "Wrong C 64"
+    ]
+  },
+  {
+    "question": "Final real question 65?",
+    "correct": "Correct answer 65",
+    "answers": [
+      "Correct answer 65",
+      "Wrong A 65",
+      "Wrong B 65",
+      "Wrong C 65"
+    ]
+  }
+];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function loadQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = '';
+      shuffle(quizData);
+
+      quizData.forEach((item, index) => {
+        shuffle(item.answers);
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+        qDiv.innerHTML = `<p><strong>${index + 1}. ${item.question}</strong></p>`;
+
+        const answersDiv = document.createElement('div');
+        answersDiv.className = 'answers';
+
+        item.answers.forEach(answer => {
+          answersDiv.innerHTML += `
+            <label>
+              <input type="radio" name="q${index}" value="${answer}"> ${answer}
+            </label>
+          `;
+        });
+
+        qDiv.appendChild(answersDiv);
+        container.appendChild(qDiv);
+      });
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      let score = 0;
+      let missed = [];
+
+      quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === item.correct) {
+          score++;
+        } else {
+          missed.push({ question: item.question, correct: item.correct });
+        }
+      });
+
+      let name = prompt("Enter your name:");
+      let quizName = "Chapter 11";
+      let total = quizData.length;
+
+      const formData = new FormData();
+      formData.append("entry.501165056", name);
+      formData.append("entry.568812027", quizName);
+      formData.append("entry.1271212779", score);
+      formData.append("entry.41916079", total);
+
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
+
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
+
+      if (missed.length > 0) {
+        container.innerHTML += `<h3>You missed the following questions:</h3>`;
+        missed.forEach((item, i) => {
+          container.innerHTML += `
+            <div class="question">
+              <p><strong>${i + 1}. ${item.question}</strong></p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        container.innerHTML += `<p><strong>Perfect score! Great job!</strong></p>`;
+      }
+
+      document.getElementById('submitBtn').style.display = 'none';
+    });
+
+    window.onload = loadQuiz;
+  </script>
+</body>
+</html>
