@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 11 Multiple Choice Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .answers label { display: block; margin: 5px 0; }
+    #submitBtn { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    .correct-answer { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Chapter 11 Multiple Choice Quiz</h2>
+  <div id="quizContainer"></div>
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const quizData = [
+  {
+    "question": "What is the correct understanding of concept 21 from Chapter 11?",
+    "correct": "Accurate explanation of concept 21",
+    "answers": [
+      "Accurate explanation of concept 21",
+      "Misconception A for concept 21",
+      "Misconception B for concept 21",
+      "Misconception C for concept 21"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 1 from Chapter 11?",
+    "correct": "Accurate explanation of concept 1",
+    "answers": [
+      "Accurate explanation of concept 1",
+      "Misconception A for concept 1",
+      "Misconception B for concept 1",
+      "Misconception C for concept 1"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 28 from Chapter 11?",
+    "correct": "Accurate explanation of concept 28",
+    "answers": [
+      "Accurate explanation of concept 28",
+      "Misconception A for concept 28",
+      "Misconception B for concept 28",
+      "Misconception C for concept 28"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 33 from Chapter 11?",
+    "correct": "Accurate explanation of concept 33",
+    "answers": [
+      "Accurate explanation of concept 33",
+      "Misconception A for concept 33",
+      "Misconception B for concept 33",
+      "Misconception C for concept 33"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 11 from Chapter 11?",
+    "correct": "Accurate explanation of concept 11",
+    "answers": [
+      "Accurate explanation of concept 11",
+      "Misconception A for concept 11",
+      "Misconception B for concept 11",
+      "Misconception C for concept 11"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 48 from Chapter 11?",
+    "correct": "Accurate explanation of concept 48",
+    "answers": [
+      "Accurate explanation of concept 48",
+      "Misconception A for concept 48",
+      "Misconception B for concept 48",
+      "Misconception C for concept 48"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 7 from Chapter 11?",
+    "correct": "Accurate explanation of concept 7",
+    "answers": [
+      "Accurate explanation of concept 7",
+      "Misconception A for concept 7",
+      "Misconception B for concept 7",
+      "Misconception C for concept 7"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 18 from Chapter 11?",
+    "correct": "Accurate explanation of concept 18",
+    "answers": [
+      "Accurate explanation of concept 18",
+      "Misconception A for concept 18",
+      "Misconception B for concept 18",
+      "Misconception C for concept 18"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 61 from Chapter 11?",
+    "correct": "Accurate explanation of concept 61",
+    "answers": [
+      "Accurate explanation of concept 61",
+      "Misconception A for concept 61",
+      "Misconception B for concept 61",
+      "Misconception C for concept 61"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 17 from Chapter 11?",
+    "correct": "Accurate explanation of concept 17",
+    "answers": [
+      "Accurate explanation of concept 17",
+      "Misconception A for concept 17",
+      "Misconception B for concept 17",
+      "Misconception C for concept 17"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 35 from Chapter 11?",
+    "correct": "Accurate explanation of concept 35",
+    "answers": [
+      "Accurate explanation of concept 35",
+      "Misconception A for concept 35",
+      "Misconception B for concept 35",
+      "Misconception C for concept 35"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 22 from Chapter 11?",
+    "correct": "Accurate explanation of concept 22",
+    "answers": [
+      "Accurate explanation of concept 22",
+      "Misconception A for concept 22",
+      "Misconception B for concept 22",
+      "Misconception C for concept 22"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 24 from Chapter 11?",
+    "correct": "Accurate explanation of concept 24",
+    "answers": [
+      "Accurate explanation of concept 24",
+      "Misconception A for concept 24",
+      "Misconception B for concept 24",
+      "Misconception C for concept 24"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 45 from Chapter 11?",
+    "correct": "Accurate explanation of concept 45",
+    "answers": [
+      "Accurate explanation of concept 45",
+      "Misconception A for concept 45",
+      "Misconception B for concept 45",
+      "Misconception C for concept 45"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 47 from Chapter 11?",
+    "correct": "Accurate explanation of concept 47",
+    "answers": [
+      "Accurate explanation of concept 47",
+      "Misconception A for concept 47",
+      "Misconception B for concept 47",
+      "Misconception C for concept 47"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 6 from Chapter 11?",
+    "correct": "Accurate explanation of concept 6",
+    "answers": [
+      "Accurate explanation of concept 6",
+      "Misconception A for concept 6",
+      "Misconception B for concept 6",
+      "Misconception C for concept 6"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 3 from Chapter 11?",
+    "correct": "Accurate explanation of concept 3",
+    "answers": [
+      "Accurate explanation of concept 3",
+      "Misconception A for concept 3",
+      "Misconception B for concept 3",
+      "Misconception C for concept 3"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 43 from Chapter 11?",
+    "correct": "Accurate explanation of concept 43",
+    "answers": [
+      "Accurate explanation of concept 43",
+      "Misconception A for concept 43",
+      "Misconception B for concept 43",
+      "Misconception C for concept 43"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 59 from Chapter 11?",
+    "correct": "Accurate explanation of concept 59",
+    "answers": [
+      "Accurate explanation of concept 59",
+      "Misconception A for concept 59",
+      "Misconception B for concept 59",
+      "Misconception C for concept 59"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 37 from Chapter 11?",
+    "correct": "Accurate explanation of concept 37",
+    "answers": [
+      "Accurate explanation of concept 37",
+      "Misconception A for concept 37",
+      "Misconception B for concept 37",
+      "Misconception C for concept 37"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 16 from Chapter 11?",
+    "correct": "Accurate explanation of concept 16",
+    "answers": [
+      "Accurate explanation of concept 16",
+      "Misconception A for concept 16",
+      "Misconception B for concept 16",
+      "Misconception C for concept 16"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 20 from Chapter 11?",
+    "correct": "Accurate explanation of concept 20",
+    "answers": [
+      "Accurate explanation of concept 20",
+      "Misconception A for concept 20",
+      "Misconception B for concept 20",
+      "Misconception C for concept 20"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 42 from Chapter 11?",
+    "correct": "Accurate explanation of concept 42",
+    "answers": [
+      "Accurate explanation of concept 42",
+      "Misconception A for concept 42",
+      "Misconception B for concept 42",
+      "Misconception C for concept 42"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 29 from Chapter 11?",
+    "correct": "Accurate explanation of concept 29",
+    "answers": [
+      "Accurate explanation of concept 29",
+      "Misconception A for concept 29",
+      "Misconception B for concept 29",
+      "Misconception C for concept 29"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 57 from Chapter 11?",
+    "correct": "Accurate explanation of concept 57",
+    "answers": [
+      "Accurate explanation of concept 57",
+      "Misconception A for concept 57",
+      "Misconception B for concept 57",
+      "Misconception C for concept 57"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 19 from Chapter 11?",
+    "correct": "Accurate explanation of concept 19",
+    "answers": [
+      "Accurate explanation of concept 19",
+      "Misconception A for concept 19",
+      "Misconception B for concept 19",
+      "Misconception C for concept 19"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 62 from Chapter 11?",
+    "correct": "Accurate explanation of concept 62",
+    "answers": [
+      "Accurate explanation of concept 62",
+      "Misconception A for concept 62",
+      "Misconception B for concept 62",
+      "Misconception C for concept 62"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 5 from Chapter 11?",
+    "correct": "Accurate explanation of concept 5",
+    "answers": [
+      "Accurate explanation of concept 5",
+      "Misconception A for concept 5",
+      "Misconception B for concept 5",
+      "Misconception C for concept 5"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 27 from Chapter 11?",
+    "correct": "Accurate explanation of concept 27",
+    "answers": [
+      "Accurate explanation of concept 27",
+      "Misconception A for concept 27",
+      "Misconception B for concept 27",
+      "Misconception C for concept 27"
+    ]
+  },
+  {
+    "question": "What is the correct understanding of concept 49 from Chapter 11?",
+    "correct": "Accurate explanation of concept 49",
+    "answers": [
+      "Accurate explanation of concept 49",
+      "Misconception A for concept 49",
+      "Misconception B for concept 49",
+      "Misconception C for concept 49"
+    ]
+  }
+];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function loadQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = '';
+      shuffle(quizData);
+
+      quizData.forEach((item, index) => {
+        shuffle(item.answers);
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+        qDiv.innerHTML = `<p><strong>${index + 1}. ${item.question}</strong></p>`;
+
+        const answersDiv = document.createElement('div');
+        answersDiv.className = 'answers';
+
+        item.answers.forEach(answer => {
+          answersDiv.innerHTML += `
+            <label>
+              <input type="radio" name="q${index}" value="${answer}"> ${answer}
+            </label>
+          `;
+        });
+
+        qDiv.appendChild(answersDiv);
+        container.appendChild(qDiv);
+      });
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      let score = 0;
+      let missed = [];
+
+      quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === item.correct) {
+          score++;
+        } else {
+          missed.push({ question: item.question, correct: item.correct });
+        }
+      });
+
+      let name = prompt("Enter your name:");
+      let quizName = "Chapter 11";
+      let total = quizData.length;
+
+      const formData = new FormData();
+      formData.append("entry.501165056", name);
+      formData.append("entry.568812027", quizName);
+      formData.append("entry.1271212779", score);
+      formData.append("entry.41916079", total);
+
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
+
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
+
+      if (missed.length > 0) {
+        container.innerHTML += `<h3>You missed the following questions:</h3>`;
+        missed.forEach((item, i) => {
+          container.innerHTML += `
+            <div class="question">
+              <p><strong>${i + 1}. ${item.question}</strong></p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        container.innerHTML += `<p><strong>Perfect score! Great job!</strong></p>`;
+      }
+
+      document.getElementById('submitBtn').style.display = 'none';
+    });
+
+    window.onload = loadQuiz;
+  </script>
+</body>
+</html>
