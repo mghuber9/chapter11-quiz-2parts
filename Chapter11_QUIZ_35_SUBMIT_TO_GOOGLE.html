@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 11 Multiple Choice Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .answers label { display: block; margin: 5px 0; }
+    #submitBtn { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    .correct-answer { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Chapter 11 Multiple Choice Quiz</h2>
+  <div id="quizContainer"></div>
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const quizData = [
+  {
+    "question": "Who presides over the commissioners court in Texas?",
+    "correct": "County judge",
+    "answers": [
+      "District attorney",
+      "County sheriff",
+      "County judge",
+      "Comptroller"
+    ]
+  },
+  {
+    "question": "Why is public safety often prioritized in city budgets?",
+    "correct": "It\u2019s the most visible and demanded public service.",
+    "answers": [
+      "It\u2019s the most visible and demanded public service.",
+      "It is federally mandated.",
+      "It receives the fewest complaints.",
+      "It is fully funded by bonds."
+    ]
+  },
+  {
+    "question": "What is the role of municipal capital improvements?",
+    "correct": "To fund long-term infrastructure like roads and flood control.",
+    "answers": [
+      "To fund long-term infrastructure like roads and flood control.",
+      "To pay administrative salaries.",
+      "To lower property taxes temporarily.",
+      "To fund political campaigns."
+    ]
+  },
+  {
+    "question": "What is the role of Topic X13?",
+    "correct": "Correct detail for Topic X13",
+    "answers": [
+      "Correct detail for Topic X13",
+      "Incorrect A13",
+      "Incorrect B13",
+      "Incorrect C13"
+    ]
+  },
+  {
+    "question": "Who must approve most municipal bonds before issuance?",
+    "correct": "Voters",
+    "answers": [
+      "City council only",
+      "The comptroller",
+      "Voters",
+      "State legislature"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X23?",
+    "correct": "Correct detail for Topic X23",
+    "answers": [
+      "Correct detail for Topic X23",
+      "Incorrect A23",
+      "Incorrect B23",
+      "Incorrect C23"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X2?",
+    "correct": "Correct detail for Topic X2",
+    "answers": [
+      "Correct detail for Topic X2",
+      "Incorrect A2",
+      "Incorrect B2",
+      "Incorrect C2"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X26?",
+    "correct": "Correct detail for Topic X26",
+    "answers": [
+      "Correct detail for Topic X26",
+      "Incorrect A26",
+      "Incorrect B26",
+      "Incorrect C26"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X22?",
+    "correct": "Correct detail for Topic X22",
+    "answers": [
+      "Correct detail for Topic X22",
+      "Incorrect A22",
+      "Incorrect B22",
+      "Incorrect C22"
+    ]
+  },
+  {
+    "question": "What do Councils of Government (COGs) primarily do?",
+    "correct": "Coordinate regional planning between governments.",
+    "answers": [
+      "Control local elections",
+      "Regulate education systems",
+      "Coordinate regional planning between governments.",
+      "Appoint local judges and clerks"
+    ]
+  },
+  {
+    "question": "Which regional entities help coordinate planning between governments?",
+    "correct": "Councils of Government (COGs)",
+    "answers": [
+      "Regional tax boards",
+      "Judicial panels",
+      "Councils of Government (COGs)",
+      "Municipal caucuses"
+    ]
+  },
+  {
+    "question": "When do most city budgets begin in Texas?",
+    "correct": "October 1",
+    "answers": [
+      "January 1",
+      "October 1",
+      "July 1",
+      "April 1"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X28?",
+    "correct": "Correct detail for Topic X28",
+    "answers": [
+      "Correct detail for Topic X28",
+      "Incorrect A28",
+      "Incorrect B28",
+      "Incorrect C28"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X25?",
+    "correct": "Correct detail for Topic X25",
+    "answers": [
+      "Correct detail for Topic X25",
+      "Incorrect A25",
+      "Incorrect B25",
+      "Incorrect C25"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X7?",
+    "correct": "Correct detail for Topic X7",
+    "answers": [
+      "Correct detail for Topic X7",
+      "Incorrect A7",
+      "Incorrect B7",
+      "Incorrect C7"
+    ]
+  },
+  {
+    "question": "What describes a regressive tax?",
+    "correct": "It takes a larger percentage from low-income earners.",
+    "answers": [
+      "It takes a larger percentage from low-income earners.",
+      "It increases with income level.",
+      "It is based on property ownership only.",
+      "It is used only by federal governments."
+    ]
+  },
+  {
+    "question": "What is the role of Topic X24?",
+    "correct": "Correct detail for Topic X24",
+    "answers": [
+      "Correct detail for Topic X24",
+      "Incorrect A24",
+      "Incorrect B24",
+      "Incorrect C24"
+    ]
+  },
+  {
+    "question": "How are Texas counties governed?",
+    "correct": "By a commissioners court and a county judge",
+    "answers": [
+      "By a commissioners court and a county judge",
+      "By a single county mayor",
+      "By the state legislature directly",
+      "By appointed officials only"
+    ]
+  },
+  {
+    "question": "What is typically the largest area of city spending in Texas?",
+    "correct": "Public safety services",
+    "answers": [
+      "Public safety services",
+      "Parks and recreation",
+      "Libraries and schools",
+      "City council salaries"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X4?",
+    "correct": "Correct detail for Topic X4",
+    "answers": [
+      "Correct detail for Topic X4",
+      "Incorrect A4",
+      "Incorrect B4",
+      "Incorrect C4"
+    ]
+  },
+  {
+    "question": "Why can't counties pass ordinances like cities?",
+    "correct": "They lack home rule authority.",
+    "answers": [
+      "They lack home rule authority.",
+      "They are under federal oversight.",
+      "They are only judicial bodies.",
+      "They are limited by their population size."
+    ]
+  },
+  {
+    "question": "What does ad valorem mean regarding taxes?",
+    "correct": "The tax is based on the property\u2019s market value.",
+    "answers": [
+      "It is a flat rate tax for all properties.",
+      "The tax is based on the property\u2019s market value.",
+      "Only rental properties are taxed.",
+      "It applies to luxury items only."
+    ]
+  },
+  {
+    "question": "What is a characteristic of Texas's fiscal model?",
+    "correct": "Low-tax, low-service",
+    "answers": [
+      "High-tax, high-service",
+      "No taxes, high service",
+      "Low-tax, low-service",
+      "Flat tax and federal oversight"
+    ]
+  },
+  {
+    "question": "What is one key responsibility of a local school board?",
+    "correct": "Hiring the superintendent",
+    "answers": [
+      "Collecting property taxes",
+      "Hiring the superintendent",
+      "Issuing court rulings",
+      "Running afterschool programs directly"
+    ]
+  },
+  {
+    "question": "Who implements policy in a council-manager city government?",
+    "correct": "A hired city manager",
+    "answers": [
+      "A hired city manager",
+      "The mayor",
+      "The city council president",
+      "The governor"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X17?",
+    "correct": "Correct detail for Topic X17",
+    "answers": [
+      "Correct detail for Topic X17",
+      "Incorrect A17",
+      "Incorrect B17",
+      "Incorrect C17"
+    ]
+  },
+  {
+    "question": "What type of district is an Independent School District (ISD)?",
+    "correct": "A special district",
+    "answers": [
+      "A home rule city",
+      "A county extension",
+      "A special district",
+      "A regional authority"
+    ]
+  },
+  {
+    "question": "How does Texas fund its government without an income tax?",
+    "correct": "It relies on sales and property taxes.",
+    "answers": [
+      "It relies on federal grants only.",
+      "It uses a state lottery exclusively.",
+      "It relies on sales and property taxes.",
+      "It imposes business income taxes instead."
+    ]
+  },
+  {
+    "question": "What is the role of Topic X14?",
+    "correct": "Correct detail for Topic X14",
+    "answers": [
+      "Correct detail for Topic X14",
+      "Incorrect A14",
+      "Incorrect B14",
+      "Incorrect C14"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X18?",
+    "correct": "Correct detail for Topic X18",
+    "answers": [
+      "Correct detail for Topic X18",
+      "Incorrect A18",
+      "Incorrect B18",
+      "Incorrect C18"
+    ]
+  },
+  {
+    "question": "What is the role of Topic X1?",
+    "correct": "Correct detail for Topic X1",
+    "answers": [
+      "Correct detail for Topic X1",
+      "Incorrect A1",
+      "Incorrect B1",
+      "Incorrect C1"
+    ]
+  },
+  {
+    "question": "What is the primary role of county government?",
+    "correct": "To carry out state functions and services locally.",
+    "answers": [
+      "To legislate new state laws.",
+      "To fund charter schools.",
+      "To carry out state functions and services locally.",
+      "To manage elections in all cities."
+    ]
+  },
+  {
+    "question": "What is one emergency role of a county judge?",
+    "correct": "Issuing public safety mandates",
+    "answers": [
+      "Issuing public safety mandates",
+      "Passing state constitutional amendments",
+      "Commanding the National Guard",
+      "Reviewing Supreme Court cases"
+    ]
+  },
+  {
+    "question": "How is a county judge different from a district judge?",
+    "correct": "The county judge is mainly an administrative leader.",
+    "answers": [
+      "The county judge oversees state budgets.",
+      "The county judge serves only on criminal cases.",
+      "The county judge is mainly an administrative leader.",
+      "There is no difference."
+    ]
+  },
+  {
+    "question": "What is the role of Topic X9?",
+    "correct": "Correct detail for Topic X9",
+    "answers": [
+      "Correct detail for Topic X9",
+      "Incorrect A9",
+      "Incorrect B9",
+      "Incorrect C9"
+    ]
+  }
+];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function loadQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = '';
+      shuffle(quizData);
+
+      quizData.forEach((item, index) => {
+        shuffle(item.answers);
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+        qDiv.innerHTML = `<p><strong>${index + 1}. ${item.question}</strong></p>`;
+
+        const answersDiv = document.createElement('div');
+        answersDiv.className = 'answers';
+
+        item.answers.forEach(answer => {
+          answersDiv.innerHTML += `
+            <label>
+              <input type="radio" name="q${index}" value="${answer}"> ${answer}
+            </label>
+          `;
+        });
+
+        qDiv.appendChild(answersDiv);
+        container.appendChild(qDiv);
+      });
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      let score = 0;
+      let missed = [];
+
+      quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === item.correct) {
+          score++;
+        } else {
+          missed.push({ question: item.question, correct: item.correct });
+        }
+      });
+
+      let name = prompt("Enter your name:");
+      let quizName = "Chapter 11";
+      let total = quizData.length;
+
+      const formData = new FormData();
+      formData.append("entry.501165056", name);
+      formData.append("entry.568812027", quizName);
+      formData.append("entry.1271212779", score);
+      formData.append("entry.41916079", total);
+
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
+
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
+
+      if (missed.length > 0) {
+        container.innerHTML += `<h3>You missed the following questions:</h3>`;
+        missed.forEach((item, i) => {
+          container.innerHTML += `
+            <div class="question">
+              <p><strong>${i + 1}. ${item.question}</strong></p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        container.innerHTML += `<p><strong>Perfect score! Great job!</strong></p>`;
+      }
+
+      document.getElementById('submitBtn').style.display = 'none';
+    });
+
+    window.onload = loadQuiz;
+  </script>
+</body>
+</html>
