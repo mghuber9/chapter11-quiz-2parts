@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 11 Multiple Choice Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .answers label { display: block; margin: 5px 0; }
+    #submitBtn { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    .correct-answer { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Chapter 11 Multiple Choice Quiz</h2>
+  <div id="quizContainer"></div>
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const quizData = [
+  {
+    "question": "What best explains the role of the comptroller in Texas fiscal policy?",
+    "correct": "Acts as the chief financial officer and revenue forecaster for the state",
+    "answers": [
+      "Acts as the chief financial officer and revenue forecaster for the state",
+      "Manages public universities",
+      "Oversees elections",
+      "Appoints local police chiefs"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 57?",
+    "correct": "Correct responsibility of local entity 57",
+    "answers": [
+      "Correct responsibility of local entity 57",
+      "Incorrect A57",
+      "Incorrect B57",
+      "Incorrect C57"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 28?",
+    "correct": "Correct responsibility of local entity 28",
+    "answers": [
+      "Correct responsibility of local entity 28",
+      "Incorrect A28",
+      "Incorrect B28",
+      "Incorrect C28"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 40?",
+    "correct": "Correct responsibility of local entity 40",
+    "answers": [
+      "Correct responsibility of local entity 40",
+      "Incorrect A40",
+      "Incorrect B40",
+      "Incorrect C40"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 44?",
+    "correct": "Correct responsibility of local entity 44",
+    "answers": [
+      "Correct responsibility of local entity 44",
+      "Incorrect A44",
+      "Incorrect B44",
+      "Incorrect C44"
+    ]
+  },
+  {
+    "question": "What is a biennial budget?",
+    "correct": "A budget that covers a two-year period",
+    "answers": [
+      "A budget that covers a two-year period",
+      "A budget used every five years",
+      "An emergency relief fund",
+      "A tax collection policy"
+    ]
+  },
+  {
+    "question": "What are ad valorem taxes based on?",
+    "correct": "The assessed value of property",
+    "answers": [
+      "The assessed value of property",
+      "The owner\u2019s income",
+      "City population size",
+      "Election results"
+    ]
+  },
+  {
+    "question": "What do Councils of Government (COGs) do?",
+    "correct": "Coordinate planning and services among local governments",
+    "answers": [
+      "Coordinate planning and services among local governments",
+      "Collect state income taxes",
+      "Elect U.S. senators",
+      "Write federal laws"
+    ]
+  },
+  {
+    "question": "What is the function of the justice of the peace?",
+    "correct": "Oversees minor civil and criminal cases in the precinct",
+    "answers": [
+      "Oversees minor civil and criminal cases in the precinct",
+      "Presides over the Texas Senate",
+      "Manages school bond elections",
+      "Issues state constitutional amendments"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 33?",
+    "correct": "Correct responsibility of local entity 33",
+    "answers": [
+      "Correct responsibility of local entity 33",
+      "Incorrect A33",
+      "Incorrect B33",
+      "Incorrect C33"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 49?",
+    "correct": "Correct responsibility of local entity 49",
+    "answers": [
+      "Correct responsibility of local entity 49",
+      "Incorrect A49",
+      "Incorrect B49",
+      "Incorrect C49"
+    ]
+  },
+  {
+    "question": "Who governs Texas counties?",
+    "correct": "The commissioners court, led by a county judge",
+    "answers": [
+      "The commissioners court, led by a county judge",
+      "The state senate",
+      "The federal district board",
+      "The justice of the peace"
+    ]
+  },
+  {
+    "question": "What does the Texas Comptroller do?",
+    "correct": "Estimates revenue and certifies the state budget",
+    "answers": [
+      "Estimates revenue and certifies the state budget",
+      "Conducts court hearings",
+      "Issues teaching certificates",
+      "Manages city infrastructure"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 39?",
+    "correct": "Correct responsibility of local entity 39",
+    "answers": [
+      "Correct responsibility of local entity 39",
+      "Incorrect A39",
+      "Incorrect B39",
+      "Incorrect C39"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 64?",
+    "correct": "Correct responsibility of local entity 64",
+    "answers": [
+      "Correct responsibility of local entity 64",
+      "Incorrect A64",
+      "Incorrect B64",
+      "Incorrect C64"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 45?",
+    "correct": "Correct responsibility of local entity 45",
+    "answers": [
+      "Correct responsibility of local entity 45",
+      "Incorrect A45",
+      "Incorrect B45",
+      "Incorrect C45"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 54?",
+    "correct": "Correct responsibility of local entity 54",
+    "answers": [
+      "Correct responsibility of local entity 54",
+      "Incorrect A54",
+      "Incorrect B54",
+      "Incorrect C54"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 43?",
+    "correct": "Correct responsibility of local entity 43",
+    "answers": [
+      "Correct responsibility of local entity 43",
+      "Incorrect A43",
+      "Incorrect B43",
+      "Incorrect C43"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 35?",
+    "correct": "Correct responsibility of local entity 35",
+    "answers": [
+      "Correct responsibility of local entity 35",
+      "Incorrect A35",
+      "Incorrect B35",
+      "Incorrect C35"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 29?",
+    "correct": "Correct responsibility of local entity 29",
+    "answers": [
+      "Correct responsibility of local entity 29",
+      "Incorrect A29",
+      "Incorrect B29",
+      "Incorrect C29"
+    ]
+  },
+  {
+    "question": "What is the primary role of county government in Texas?",
+    "correct": "Carrying out state laws and services at the local level",
+    "answers": [
+      "Carrying out state laws and services at the local level",
+      "Controlling national defense",
+      "Licensing universities",
+      "Running federal elections"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 60?",
+    "correct": "Correct responsibility of local entity 60",
+    "answers": [
+      "Correct responsibility of local entity 60",
+      "Incorrect A60",
+      "Incorrect B60",
+      "Incorrect C60"
+    ]
+  },
+  {
+    "question": "How are municipal bonds repaid?",
+    "correct": "Through taxes or revenue generated by the project",
+    "answers": [
+      "Through taxes or revenue generated by the project",
+      "By the federal reserve",
+      "Through business licenses",
+      "With school district funds"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 27?",
+    "correct": "Correct responsibility of local entity 27",
+    "answers": [
+      "Correct responsibility of local entity 27",
+      "Incorrect A27",
+      "Incorrect B27",
+      "Incorrect C27"
+    ]
+  },
+  {
+    "question": "Why does Texas create a biennial budget?",
+    "correct": "The legislature meets every two years and must plan ahead",
+    "answers": [
+      "The legislature meets every two years and must plan ahead",
+      "To avoid federal audits",
+      "To raise campaign funds",
+      "To pay for oil exploration"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 58?",
+    "correct": "Correct responsibility of local entity 58",
+    "answers": [
+      "Correct responsibility of local entity 58",
+      "Incorrect A58",
+      "Incorrect B58",
+      "Incorrect C58"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 59?",
+    "correct": "Correct responsibility of local entity 59",
+    "answers": [
+      "Correct responsibility of local entity 59",
+      "Incorrect A59",
+      "Incorrect B59",
+      "Incorrect C59"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 21?",
+    "correct": "Correct responsibility of local entity 21",
+    "answers": [
+      "Correct responsibility of local entity 21",
+      "Incorrect A21",
+      "Incorrect B21",
+      "Incorrect C21"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 32?",
+    "correct": "Correct responsibility of local entity 32",
+    "answers": [
+      "Correct responsibility of local entity 32",
+      "Incorrect A32",
+      "Incorrect B32",
+      "Incorrect C32"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 36?",
+    "correct": "Correct responsibility of local entity 36",
+    "answers": [
+      "Correct responsibility of local entity 36",
+      "Incorrect A36",
+      "Incorrect B36",
+      "Incorrect C36"
+    ]
+  }
+];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function loadQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = '';
+      shuffle(quizData);
+
+      quizData.forEach((item, index) => {
+        shuffle(item.answers);
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+        qDiv.innerHTML = `<p><strong>${index + 1}. ${item.question}</strong></p>`;
+
+        const answersDiv = document.createElement('div');
+        answersDiv.className = 'answers';
+
+        item.answers.forEach(answer => {
+          answersDiv.innerHTML += `
+            <label>
+              <input type="radio" name="q${index}" value="${answer}"> ${answer}
+            </label>
+          `;
+        });
+
+        qDiv.appendChild(answersDiv);
+        container.appendChild(qDiv);
+      });
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      let score = 0;
+      let missed = [];
+
+      quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === item.correct) {
+          score++;
+        } else {
+          missed.push({ question: item.question, correct: item.correct });
+        }
+      });
+
+      let name = prompt("Enter your name:");
+      let quizName = "Chapter 11";
+      let total = quizData.length;
+
+      const formData = new FormData();
+      formData.append("entry.501165056", name);
+      formData.append("entry.568812027", quizName);
+      formData.append("entry.1271212779", score);
+      formData.append("entry.41916079", total);
+
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
+
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
+
+      if (missed.length > 0) {
+        container.innerHTML += `<h3>You missed the following questions:</h3>`;
+        missed.forEach((item, i) => {
+          container.innerHTML += `
+            <div class="question">
+              <p><strong>${i + 1}. ${item.question}</strong></p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        container.innerHTML += `<p><strong>Perfect score! Great job!</strong></p>`;
+      }
+
+      document.getElementById('submitBtn').style.display = 'none';
+    });
+
+    window.onload = loadQuiz;
+  </script>
+</body>
+</html>

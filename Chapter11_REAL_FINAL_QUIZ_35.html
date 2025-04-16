@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 11 Multiple Choice Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .answers label { display: block; margin: 5px 0; }
+    #submitBtn { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    .correct-answer { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Chapter 11 Multiple Choice Quiz</h2>
+  <div id="quizContainer"></div>
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const quizData = [
+  {
+    "question": "Which function is typically performed by local entity 56?",
+    "correct": "Correct responsibility of local entity 56",
+    "answers": [
+      "Correct responsibility of local entity 56",
+      "Incorrect A56",
+      "Incorrect B56",
+      "Incorrect C56"
+    ]
+  },
+  {
+    "question": "What are capital improvements in local government?",
+    "correct": "Large, long-term investments like flood control or fire stations",
+    "answers": [
+      "Large, long-term investments like flood control or fire stations",
+      "Annual budget cuts",
+      "Pension adjustments",
+      "Vehicle registrations"
+    ]
+  },
+  {
+    "question": "What is the purpose of municipal bonds?",
+    "correct": "To raise funds for public projects like roads and buildings",
+    "answers": [
+      "To raise funds for public projects like roads and buildings",
+      "To provide state pensions",
+      "To avoid tax audits",
+      "To pay for political campaigns"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 34?",
+    "correct": "Correct responsibility of local entity 34",
+    "answers": [
+      "Correct responsibility of local entity 34",
+      "Incorrect A34",
+      "Incorrect B34",
+      "Incorrect C34"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 38?",
+    "correct": "Correct responsibility of local entity 38",
+    "answers": [
+      "Correct responsibility of local entity 38",
+      "Incorrect A38",
+      "Incorrect B38",
+      "Incorrect C38"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 52?",
+    "correct": "Correct responsibility of local entity 52",
+    "answers": [
+      "Correct responsibility of local entity 52",
+      "Incorrect A52",
+      "Incorrect B52",
+      "Incorrect C52"
+    ]
+  },
+  {
+    "question": "What distinguishes a general law city from a home rule city?",
+    "correct": "Home rule cities operate under a locally approved charter; general law cities follow state law.",
+    "answers": [
+      "Home rule cities operate under a locally approved charter; general law cities follow state law.",
+      "General law cities are always larger than home rule cities.",
+      "General law cities use federal laws for governance.",
+      "Home rule cities cannot levy taxes."
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 24?",
+    "correct": "Correct responsibility of local entity 24",
+    "answers": [
+      "Correct responsibility of local entity 24",
+      "Incorrect A24",
+      "Incorrect B24",
+      "Incorrect C24"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 47?",
+    "correct": "Correct responsibility of local entity 47",
+    "answers": [
+      "Correct responsibility of local entity 47",
+      "Incorrect A47",
+      "Incorrect B47",
+      "Incorrect C47"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 50?",
+    "correct": "Correct responsibility of local entity 50",
+    "answers": [
+      "Correct responsibility of local entity 50",
+      "Incorrect A50",
+      "Incorrect B50",
+      "Incorrect C50"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 62?",
+    "correct": "Correct responsibility of local entity 62",
+    "answers": [
+      "Correct responsibility of local entity 62",
+      "Incorrect A62",
+      "Incorrect B62",
+      "Incorrect C62"
+    ]
+  },
+  {
+    "question": "What is a key responsibility of the county judge?",
+    "correct": "Presiding over the commissioners court and emergency declarations",
+    "answers": [
+      "Presiding over the commissioners court and emergency declarations",
+      "Issuing parking tickets",
+      "Hiring school teachers",
+      "Running the state treasury"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 63?",
+    "correct": "Correct responsibility of local entity 63",
+    "answers": [
+      "Correct responsibility of local entity 63",
+      "Incorrect A63",
+      "Incorrect B63",
+      "Incorrect C63"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 48?",
+    "correct": "Correct responsibility of local entity 48",
+    "answers": [
+      "Correct responsibility of local entity 48",
+      "Incorrect A48",
+      "Incorrect B48",
+      "Incorrect C48"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 30?",
+    "correct": "Correct responsibility of local entity 30",
+    "answers": [
+      "Correct responsibility of local entity 30",
+      "Incorrect A30",
+      "Incorrect B30",
+      "Incorrect C30"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 55?",
+    "correct": "Correct responsibility of local entity 55",
+    "answers": [
+      "Correct responsibility of local entity 55",
+      "Incorrect A55",
+      "Incorrect B55",
+      "Incorrect C55"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 26?",
+    "correct": "Correct responsibility of local entity 26",
+    "answers": [
+      "Correct responsibility of local entity 26",
+      "Incorrect A26",
+      "Incorrect B26",
+      "Incorrect C26"
+    ]
+  },
+  {
+    "question": "What is the role of a local school board?",
+    "correct": "Overseeing school district policy, budgets, and hiring a superintendent",
+    "answers": [
+      "Overseeing school district policy, budgets, and hiring a superintendent",
+      "Running all state charter schools",
+      "Appointing the state comptroller",
+      "Issuing building permits"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 42?",
+    "correct": "Correct responsibility of local entity 42",
+    "answers": [
+      "Correct responsibility of local entity 42",
+      "Incorrect A42",
+      "Incorrect B42",
+      "Incorrect C42"
+    ]
+  },
+  {
+    "question": "In a council-manager government, who manages daily operations?",
+    "correct": "The professional city manager",
+    "answers": [
+      "The professional city manager",
+      "The elected mayor",
+      "The governor",
+      "The chief constable"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 53?",
+    "correct": "Correct responsibility of local entity 53",
+    "answers": [
+      "Correct responsibility of local entity 53",
+      "Incorrect A53",
+      "Incorrect B53",
+      "Incorrect C53"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 51?",
+    "correct": "Correct responsibility of local entity 51",
+    "answers": [
+      "Correct responsibility of local entity 51",
+      "Incorrect A51",
+      "Incorrect B51",
+      "Incorrect C51"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 61?",
+    "correct": "Correct responsibility of local entity 61",
+    "answers": [
+      "Correct responsibility of local entity 61",
+      "Incorrect A61",
+      "Incorrect B61",
+      "Incorrect C61"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 31?",
+    "correct": "Correct responsibility of local entity 31",
+    "answers": [
+      "Correct responsibility of local entity 31",
+      "Incorrect A31",
+      "Incorrect B31",
+      "Incorrect C31"
+    ]
+  },
+  {
+    "question": "Why are single-member districts important in local elections?",
+    "correct": "They help ensure more diverse and representative local government",
+    "answers": [
+      "They help ensure more diverse and representative local government",
+      "They eliminate campaign spending",
+      "They require statewide votes",
+      "They are only used in rural areas"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 41?",
+    "correct": "Correct responsibility of local entity 41",
+    "answers": [
+      "Correct responsibility of local entity 41",
+      "Incorrect A41",
+      "Incorrect B41",
+      "Incorrect C41"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 22?",
+    "correct": "Correct responsibility of local entity 22",
+    "answers": [
+      "Correct responsibility of local entity 22",
+      "Incorrect A22",
+      "Incorrect B22",
+      "Incorrect C22"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 23?",
+    "correct": "Correct responsibility of local entity 23",
+    "answers": [
+      "Correct responsibility of local entity 23",
+      "Incorrect A23",
+      "Incorrect B23",
+      "Incorrect C23"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 37?",
+    "correct": "Correct responsibility of local entity 37",
+    "answers": [
+      "Correct responsibility of local entity 37",
+      "Incorrect A37",
+      "Incorrect B37",
+      "Incorrect C37"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 65?",
+    "correct": "Correct responsibility of local entity 65",
+    "answers": [
+      "Correct responsibility of local entity 65",
+      "Incorrect A65",
+      "Incorrect B65",
+      "Incorrect C65"
+    ]
+  },
+  {
+    "question": "What is the difference between regressive and progressive taxes?",
+    "correct": "Regressive taxes burden low-income earners more, while progressive taxes burden high-income earners more.",
+    "answers": [
+      "Regressive taxes burden low-income earners more, while progressive taxes burden high-income earners more.",
+      "Progressive taxes are flat-rate only.",
+      "Regressive taxes do not apply to sales or property.",
+      "There is no difference."
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 46?",
+    "correct": "Correct responsibility of local entity 46",
+    "answers": [
+      "Correct responsibility of local entity 46",
+      "Incorrect A46",
+      "Incorrect B46",
+      "Incorrect C46"
+    ]
+  },
+  {
+    "question": "Who are constables in Texas?",
+    "correct": "Peace officers who serve legal papers and assist justice courts",
+    "answers": [
+      "Peace officers who serve legal papers and assist justice courts",
+      "City councilmembers",
+      "U.S. marshals",
+      "Property tax assessors"
+    ]
+  },
+  {
+    "question": "What is one major area of state and local spending in Texas?",
+    "correct": "Public education",
+    "answers": [
+      "Public education",
+      "Space exploration",
+      "Foreign policy",
+      "International aid"
+    ]
+  },
+  {
+    "question": "Which function is typically performed by local entity 25?",
+    "correct": "Correct responsibility of local entity 25",
+    "answers": [
+      "Correct responsibility of local entity 25",
+      "Incorrect A25",
+      "Incorrect B25",
+      "Incorrect C25"
+    ]
+  }
+];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function loadQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = '';
+      shuffle(quizData);
+
+      quizData.forEach((item, index) => {
+        shuffle(item.answers);
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+        qDiv.innerHTML = `<p><strong>${index + 1}. ${item.question}</strong></p>`;
+
+        const answersDiv = document.createElement('div');
+        answersDiv.className = 'answers';
+
+        item.answers.forEach(answer => {
+          answersDiv.innerHTML += `
+            <label>
+              <input type="radio" name="q${index}" value="${answer}"> ${answer}
+            </label>
+          `;
+        });
+
+        qDiv.appendChild(answersDiv);
+        container.appendChild(qDiv);
+      });
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      let score = 0;
+      let missed = [];
+
+      quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === item.correct) {
+          score++;
+        } else {
+          missed.push({ question: item.question, correct: item.correct });
+        }
+      });
+
+      let name = prompt("Enter your name:");
+      let quizName = "Chapter 11";
+      let total = quizData.length;
+
+      const formData = new FormData();
+      formData.append("entry.501165056", name);
+      formData.append("entry.568812027", quizName);
+      formData.append("entry.1271212779", score);
+      formData.append("entry.41916079", total);
+
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
+
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
+
+      if (missed.length > 0) {
+        container.innerHTML += `<h3>You missed the following questions:</h3>`;
+        missed.forEach((item, i) => {
+          container.innerHTML += `
+            <div class="question">
+              <p><strong>${i + 1}. ${item.question}</strong></p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        container.innerHTML += `<p><strong>Perfect score! Great job!</strong></p>`;
+      }
+
+      document.getElementById('submitBtn').style.display = 'none';
+    });
+
+    window.onload = loadQuiz;
+  </script>
+</body>
+</html>
