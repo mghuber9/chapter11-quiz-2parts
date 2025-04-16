@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 11 Multiple Choice Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .answers label { display: block; margin: 5px 0; }
+    #submitBtn { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    .correct-answer { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Chapter 11 Multiple Choice Quiz</h2>
+  <div id="quizContainer"></div>
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const quizData = [
+  {
+    "question": "In a council-manager system, who carries out policy?",
+    "correct": "A professional city manager",
+    "answers": [
+      "A professional city manager",
+      "An elected mayor",
+      "A county judge",
+      "The police chief"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 43 in Texas local government?",
+    "correct": "Correct description of Topic 43",
+    "answers": [
+      "Correct description of Topic 43",
+      "Incorrect A43",
+      "Incorrect B43",
+      "Incorrect C43"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 40 in Texas local government?",
+    "correct": "Correct description of Topic 40",
+    "answers": [
+      "Correct description of Topic 40",
+      "Incorrect A40",
+      "Incorrect B40",
+      "Incorrect C40"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 15 in Texas local government?",
+    "correct": "Correct description of Topic 15",
+    "answers": [
+      "Correct description of Topic 15",
+      "Incorrect A15",
+      "Incorrect B15",
+      "Incorrect C15"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 60 in Texas local government?",
+    "correct": "Correct description of Topic 60",
+    "answers": [
+      "Correct description of Topic 60",
+      "Incorrect A60",
+      "Incorrect B60",
+      "Incorrect C60"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 7 in Texas local government?",
+    "correct": "Correct description of Topic 7",
+    "answers": [
+      "Correct description of Topic 7",
+      "Incorrect A7",
+      "Incorrect B7",
+      "Incorrect C7"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 27 in Texas local government?",
+    "correct": "Correct description of Topic 27",
+    "answers": [
+      "Correct description of Topic 27",
+      "Incorrect A27",
+      "Incorrect B27",
+      "Incorrect C27"
+    ]
+  },
+  {
+    "question": "What distinguishes Home Rule cities?",
+    "correct": "They operate under a locally approved charter.",
+    "answers": [
+      "They operate under a locally approved charter.",
+      "They have no mayor or council.",
+      "They are only in counties with over 1 million people.",
+      "They are state-run districts."
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 39 in Texas local government?",
+    "correct": "Correct description of Topic 39",
+    "answers": [
+      "Correct description of Topic 39",
+      "Incorrect A39",
+      "Incorrect B39",
+      "Incorrect C39"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 63 in Texas local government?",
+    "correct": "Correct description of Topic 63",
+    "answers": [
+      "Correct description of Topic 63",
+      "Incorrect A63",
+      "Incorrect B63",
+      "Incorrect C63"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 61 in Texas local government?",
+    "correct": "Correct description of Topic 61",
+    "answers": [
+      "Correct description of Topic 61",
+      "Incorrect A61",
+      "Incorrect B61",
+      "Incorrect C61"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 44 in Texas local government?",
+    "correct": "Correct description of Topic 44",
+    "answers": [
+      "Correct description of Topic 44",
+      "Incorrect A44",
+      "Incorrect B44",
+      "Incorrect C44"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 59 in Texas local government?",
+    "correct": "Correct description of Topic 59",
+    "answers": [
+      "Correct description of Topic 59",
+      "Incorrect A59",
+      "Incorrect B59",
+      "Incorrect C59"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 57 in Texas local government?",
+    "correct": "Correct description of Topic 57",
+    "answers": [
+      "Correct description of Topic 57",
+      "Incorrect A57",
+      "Incorrect B57",
+      "Incorrect C57"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 6 in Texas local government?",
+    "correct": "Correct description of Topic 6",
+    "answers": [
+      "Correct description of Topic 6",
+      "Incorrect A6",
+      "Incorrect B6",
+      "Incorrect C6"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 30 in Texas local government?",
+    "correct": "Correct description of Topic 30",
+    "answers": [
+      "Correct description of Topic 30",
+      "Incorrect A30",
+      "Incorrect B30",
+      "Incorrect C30"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 51 in Texas local government?",
+    "correct": "Correct description of Topic 51",
+    "answers": [
+      "Correct description of Topic 51",
+      "Incorrect A51",
+      "Incorrect B51",
+      "Incorrect C51"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 38 in Texas local government?",
+    "correct": "Correct description of Topic 38",
+    "answers": [
+      "Correct description of Topic 38",
+      "Incorrect A38",
+      "Incorrect B38",
+      "Incorrect C38"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 52 in Texas local government?",
+    "correct": "Correct description of Topic 52",
+    "answers": [
+      "Correct description of Topic 52",
+      "Incorrect A52",
+      "Incorrect B52",
+      "Incorrect C52"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 14 in Texas local government?",
+    "correct": "Correct description of Topic 14",
+    "answers": [
+      "Correct description of Topic 14",
+      "Incorrect A14",
+      "Incorrect B14",
+      "Incorrect C14"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 26 in Texas local government?",
+    "correct": "Correct description of Topic 26",
+    "answers": [
+      "Correct description of Topic 26",
+      "Incorrect A26",
+      "Incorrect B26",
+      "Incorrect C26"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 55 in Texas local government?",
+    "correct": "Correct description of Topic 55",
+    "answers": [
+      "Correct description of Topic 55",
+      "Incorrect A55",
+      "Incorrect B55",
+      "Incorrect C55"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 47 in Texas local government?",
+    "correct": "Correct description of Topic 47",
+    "answers": [
+      "Correct description of Topic 47",
+      "Incorrect A47",
+      "Incorrect B47",
+      "Incorrect C47"
+    ]
+  },
+  {
+    "question": "What is a key trait of General Law cities in Texas?",
+    "correct": "They are regulated by state law with limited autonomy.",
+    "answers": [
+      "They are regulated by state law with limited autonomy.",
+      "They operate under their own charter.",
+      "They are only found in large urban areas.",
+      "They do not have city councils."
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 25 in Texas local government?",
+    "correct": "Correct description of Topic 25",
+    "answers": [
+      "Correct description of Topic 25",
+      "Incorrect A25",
+      "Incorrect B25",
+      "Incorrect C25"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 35 in Texas local government?",
+    "correct": "Correct description of Topic 35",
+    "answers": [
+      "Correct description of Topic 35",
+      "Incorrect A35",
+      "Incorrect B35",
+      "Incorrect C35"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 21 in Texas local government?",
+    "correct": "Correct description of Topic 21",
+    "answers": [
+      "Correct description of Topic 21",
+      "Incorrect A21",
+      "Incorrect B21",
+      "Incorrect C21"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 20 in Texas local government?",
+    "correct": "Correct description of Topic 20",
+    "answers": [
+      "Correct description of Topic 20",
+      "Incorrect A20",
+      "Incorrect B20",
+      "Incorrect C20"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 8 in Texas local government?",
+    "correct": "Correct description of Topic 8",
+    "answers": [
+      "Correct description of Topic 8",
+      "Incorrect A8",
+      "Incorrect B8",
+      "Incorrect C8"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 64 in Texas local government?",
+    "correct": "Correct description of Topic 64",
+    "answers": [
+      "Correct description of Topic 64",
+      "Incorrect A64",
+      "Incorrect B64",
+      "Incorrect C64"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 23 in Texas local government?",
+    "correct": "Correct description of Topic 23",
+    "answers": [
+      "Correct description of Topic 23",
+      "Incorrect A23",
+      "Incorrect B23",
+      "Incorrect C23"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 18 in Texas local government?",
+    "correct": "Correct description of Topic 18",
+    "answers": [
+      "Correct description of Topic 18",
+      "Incorrect A18",
+      "Incorrect B18",
+      "Incorrect C18"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 33 in Texas local government?",
+    "correct": "Correct description of Topic 33",
+    "answers": [
+      "Correct description of Topic 33",
+      "Incorrect A33",
+      "Incorrect B33",
+      "Incorrect C33"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 50 in Texas local government?",
+    "correct": "Correct description of Topic 50",
+    "answers": [
+      "Correct description of Topic 50",
+      "Incorrect A50",
+      "Incorrect B50",
+      "Incorrect C50"
+    ]
+  },
+  {
+    "question": "What is the main function of Topic 29 in Texas local government?",
+    "correct": "Correct description of Topic 29",
+    "answers": [
+      "Correct description of Topic 29",
+      "Incorrect A29",
+      "Incorrect B29",
+      "Incorrect C29"
+    ]
+  }
+];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function loadQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = '';
+      shuffle(quizData);
+
+      quizData.forEach((item, index) => {
+        shuffle(item.answers);
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+        qDiv.innerHTML = `<p><strong>${index + 1}. ${item.question}</strong></p>`;
+
+        const answersDiv = document.createElement('div');
+        answersDiv.className = 'answers';
+
+        item.answers.forEach(answer => {
+          answersDiv.innerHTML += `
+            <label>
+              <input type="radio" name="q${index}" value="${answer}"> ${answer}
+            </label>
+          `;
+        });
+
+        qDiv.appendChild(answersDiv);
+        container.appendChild(qDiv);
+      });
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      let score = 0;
+      let missed = [];
+
+      quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === item.correct) {
+          score++;
+        } else {
+          missed.push({ question: item.question, correct: item.correct });
+        }
+      });
+
+      let name = prompt("Enter your name:");
+      let quizName = "Chapter 11";
+      let total = quizData.length;
+
+      const formData = new FormData();
+      formData.append("entry.501165056", name);
+      formData.append("entry.568812027", quizName);
+      formData.append("entry.1271212779", score);
+      formData.append("entry.41916079", total);
+
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
+
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
+
+      if (missed.length > 0) {
+        container.innerHTML += `<h3>You missed the following questions:</h3>`;
+        missed.forEach((item, i) => {
+          container.innerHTML += `
+            <div class="question">
+              <p><strong>${i + 1}. ${item.question}</strong></p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        container.innerHTML += `<p><strong>Perfect score! Great job!</strong></p>`;
+      }
+
+      document.getElementById('submitBtn').style.display = 'none';
+    });
+
+    window.onload = loadQuiz;
+  </script>
+</body>
+</html>
