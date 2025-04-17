@@ -437,23 +437,35 @@ fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHS
 });
 
       let name = prompt("Enter your name:");
-      let quizName = "Chapter 11 (35)";
-      let total = quizData.length;
+let quizName = "Chapter 11 Quiz - Part A (30)";
+let total = quizData.length;
 
-      // Assume `score` is already defined from your quiz logic
+// Assuming 'score' has already been calculated
 
-      const formData = new FormData();
-      formData.append("entry.310801143", name);         // ✅ Correct Student Name
-      formData.append("entry.1353981266", quizName);    // ✅ Correct Quiz Name
-      formData.append("entry.2126481175", score);       // ✅ Correct Score
-      formData.append("entry.1147794060", total);       // ✅ Correct Total Questions
+const formData = new FormData();
+formData.append("entry.310801143", name);
+formData.append("entry.1353981266", quizName);
+formData.append("entry.2126481175", score);
+formData.append("entry.1147794060", total);
 
-      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
-      });
+// 👇 ADD THESE CONSOLE LOGS HERE
+console.log("Submitting the following data:");
+console.log("Name:", name);
+console.log("Quiz Name:", quizName);
+console.log("Score:", score);
+console.log("Total Questions:", total);
 
+fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+  method: "POST",
+  mode: "no-cors",
+  body: formData
+});
+
+console.log("Fetch sent");
+
+
+      
+      
       
    
       const container = document.getElementById('quizContainer');
