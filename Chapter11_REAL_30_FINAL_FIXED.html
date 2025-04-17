@@ -368,32 +368,21 @@
         }
       });
 
-
 let name = prompt("Enter your name:");
 let quizName = "Chapter 11 Quiz - Part A (30)";
 let total = quizData.length;
 
-// Assuming 'score' has already been calculated
-
-const formData = new FormData();
-formData.append("entry.310801143", name);
-formData.append("entry.1353981266", quizName);
-formData.append("entry.2126481175", score);
-formData.append("entry.1147794060", total);
-
-// 👇 ADD THESE CONSOLE LOGS HERE
 console.log("Submitting the following data:");
 console.log("Name:", name);
 console.log("Quiz Name:", quizName);
 console.log("Score:", score);
 console.log("Total Questions:", total);
 
-
 fetch("https://script.google.com/macros/s/AKfycbwA8-gsYG5QQ6WTLZ3y9VdkUYgwgrUOg2506vSP-lQtGD_0NCkB-LmRNhoBZ2W0-Lax/exec", {
   method: "POST",
   body: JSON.stringify({
     name: name,
-    quiz: "Chapter 11 Quiz - Part A (30)",  // <-- or whatever label you want
+    quiz: quizName,
     score: score,
     total: total
   }),
@@ -402,9 +391,11 @@ fetch("https://script.google.com/macros/s/AKfycbwA8-gsYG5QQ6WTLZ3y9VdkUYgwgrUOg2
   }
 });
 
-      
-
 console.log("Fetch sent");
+
+
+
+      
 
       
     
