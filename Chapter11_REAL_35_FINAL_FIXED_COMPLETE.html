@@ -406,71 +406,64 @@
     }
 
     document.getElementById('submitBtn').addEventListener('click', () => {
-      let score = 0;
-      let missed = [];
+  let score = 0;
+  let missed = [];
 
-      quizData.forEach((item, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        if (selected && selected.value === item.correct) {
-          score++;
-        } else {
-          missed.push({ question: item.question, correct: item.correct });
-        }
+  quizData.forEach((item, index) => {
+    const selected = document.querySelector(`input[name="q${index}"]:checked`);
+    if (selected && selected.value === item.correct) {
+      score++;
+    } else {
+      missed.push({ question: item.question, correct: item.correct });
+    }
+  });
+
+  let name = prompt("Enter your name:");
+  let quizName = "Chapter 11 Quiz - Part B (35)";  // ✅ Make sure this reflects the correct quiz version
+  let total = quizData.length;
+
+  const formData = new FormData();
+  formData.append("entry.310801143", name);
+  formData.append("entry.1353981266", quizName);
+  formData.append("entry.2126481175", score);
+  formData.append("entry.1147794060", total);
+
+  console.log("Submitting the following data:");
+  console.log("Name:", name);
+  console.log("Quiz Name:", quizName);
+  console.log("Score:", score);
+  console.log("Total Questions:", total);
+
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  });
+
+  console.log("Fetch sent");
+
+  // ✅ Delay result display to ensure fetch has time to complete
+  setTimeout(() => {
+    const container = document.getElementById('quizContainer');
+    container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
+
+    if (missed.length > 0) {
+      container.innerHTML += `<h3>You missed the following questions:</h3>`;
+      missed.forEach((item, i) => {
+        container.innerHTML += `
+          <div class="question">
+            <p><strong>${i + 1}. ${item.question}</strong></p>
+            <p class="correct-answer">Correct answer: ${item.correct}</p>
+          </div>
+        `;
       });
+    } else {
+      container.innerHTML += `<p><strong>Perfect score! Great job!</strong></p>`;
+    }
 
-
-
-      let name = prompt("Enter your name:");
-let quizName = "Chapter 11 Quiz - Part A (30)";
-let total = quizData.length;
-
-// Assuming 'score' has already been calculated
-
-const formData = new FormData();
-formData.append("entry.310801143", name);
-formData.append("entry.1353981266", quizName);
-formData.append("entry.2126481175", score);
-formData.append("entry.1147794060", total);
-
-// 👇 ADD THESE CONSOLE LOGS HERE
-console.log("Submitting the following data:");
-console.log("Name:", name);
-console.log("Quiz Name:", quizName);
-console.log("Score:", score);
-console.log("Total Questions:", total);
-
-fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
-  method: "POST",
-  mode: "no-cors",
-  body: formData
+    document.getElementById('submitBtn').style.display = 'none';
+  }, 1000);
 });
-
-console.log("Fetch sent");
-
-
-      
-      
-      
-   
-      const container = document.getElementById('quizContainer');
-      container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
-
-      if (missed.length > 0) {
-        container.innerHTML += `<h3>You missed the following questions:</h3>`;
-        missed.forEach((item, i) => {
-          container.innerHTML += `
-            <div class="question">
-              <p><strong>${i + 1}. ${item.question}</strong></p>
-              <p class="correct-answer">Correct answer: ${item.correct}</p>
-            </div>
-          `;
-        });
-      } else {
-        container.innerHTML += `<p><strong>Perfect score! Great job!</strong></p>`;
-      }
-
-      document.getElementById('submitBtn').style.display = 'none';
-    });
 
     window.onload = loadQuiz;
   </script>
