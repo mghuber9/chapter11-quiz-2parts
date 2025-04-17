@@ -422,13 +422,11 @@
   let quizName = "Chapter 11 Quiz - Part B (35)";  // ✅ Make sure this reflects the correct quiz version
   let total = quizData.length;
 
-
-  const formData = new URLSearchParams({
-  "entry.310801143": name,
-  "entry.1353981266": quizName,
-  "entry.2126481175": score,
-  "entry.1147794060": total
-}).toString();
+  const formData = new URLSearchParams();
+formData.append("entry.589672365", name);       // Student Name
+formData.append("entry.1886111673", quizName);  // Quiz Name
+formData.append("entry.1377682006", score);     // Score
+formData.append("entry.1780060173", total);     // Total Questions
 
 fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
   method: "POST",
@@ -438,6 +436,10 @@ fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHS
   },
   body: formData
 });
+
+
+      
+  
 
       
   
