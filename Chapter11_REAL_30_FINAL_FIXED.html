@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chapter 11 Multiple Choice Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    .question { margin-bottom: 20px; }
+    .answers label { display: block; margin: 5px 0; }
+    #submitBtn { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+    .correct-answer { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Chapter 11 Multiple Choice Quiz</h2>
+  <div id="quizContainer"></div>
+  <button id="submitBtn">Submit</button>
+
+  <script>
+    const quizData = [
+  {
+    "question": "What is the main source of funding for most local governments in Texas?",
+    "correct": "Property taxes",
+    "answers": [
+      "National sales tax",
+      "Oil and gas revenue",
+      "Property taxes",
+      "Federal income taxes"
+    ]
+  },
+  {
+    "question": "What is the role of a district clerk in the judicial system?",
+    "correct": "Maintaining court records and managing jury duty notices",
+    "answers": [
+      "Approving new laws",
+      "Administering public school exams",
+      "Maintaining court records and managing jury duty notices",
+      "Monitoring county spending"
+    ]
+  },
+  {
+    "question": "What does a grand jury decide in Texas?",
+    "correct": "Whether enough evidence exists to bring criminal charges",
+    "answers": [
+      "Whether a defendant is guilty",
+      "Who is elected to local office",
+      "Whether enough evidence exists to bring criminal charges",
+      "What fines should be issued in civil cases"
+    ]
+  },
+  {
+    "question": "Which type of jury decides the outcome of a criminal or civil trial?",
+    "correct": "Trial jury",
+    "answers": [
+      "District jury",
+      "Trial jury",
+      "Commissioners jury",
+      "Appellate panel"
+    ]
+  },
+  {
+    "question": "What is the difference between a grand jury and a trial jury?",
+    "correct": "A grand jury decides whether to indict, while a trial jury determines guilt or innocence",
+    "answers": [
+      "A grand jury hears appeals",
+      "A trial jury determines if charges should be filed",
+      "A grand jury issues the verdict",
+      "A grand jury decides whether to indict, while a trial jury determines guilt or innocence"
+    ]
+  },
+  {
+    "question": "Which courts in Texas generally handle felony cases?",
+    "correct": "District courts",
+    "answers": [
+      "Municipal courts",
+      "Justice of the Peace courts",
+      "County courts",
+      "District courts"
+    ]
+  },
+  {
+    "question": "What does it mean when a court has original jurisdiction?",
+    "correct": "It can hear a case for the first time",
+    "answers": [
+      "It can review lower court decisions",
+      "It only hears appeals",
+      "It can hear a case for the first time",
+      "It refers cases to Congress"
+    ]
+  },
+  {
+    "question": "What type of case is typically heard first by the Justice of the Peace?",
+    "correct": "Traffic tickets and small claims",
+    "answers": [
+      "Felony murder trials",
+      "Traffic tickets and small claims",
+      "Patent disputes",
+      "Federal tax cases"
+    ]
+  },
+  {
+    "question": "Which court level primarily handles civil cases involving large amounts of money or felony criminal trials?",
+    "correct": "District court",
+    "answers": [
+      "County court",
+      "Federal court",
+      "District court",
+      "Probate court"
+    ]
+  },
+  {
+    "question": "What is appellate jurisdiction?",
+    "correct": "Authority to review decisions from lower courts",
+    "answers": [
+      "The ability to enforce city ordinances",
+      "Authority to hear a case for the first time",
+      "Authority to overturn a governor\u2019s decision",
+      "Authority to review decisions from lower courts"
+    ]
+  },
+  {
+    "question": "What are local governments in Texas primarily responsible for?",
+    "correct": "Providing basic services like roads, police, and fire protection",
+    "answers": [
+      "Conducting national elections",
+      "Managing military affairs",
+      "Providing basic services like roads, police, and fire protection",
+      "Administering the federal income tax"
+    ]
+  },
+  {
+    "question": "Who issues arrest warrants and subpoenas in county-level courts?",
+    "correct": "The Justice of the Peace",
+    "answers": [
+      "The comptroller",
+      "The mayor",
+      "The Justice of the Peace",
+      "The school board"
+    ]
+  },
+  {
+    "question": "What is a civil case?",
+    "correct": "A lawsuit over property, contracts, or family matters",
+    "answers": [
+      "A case involving criminal punishment",
+      "A lawsuit over property, contracts, or family matters",
+      "A case about traffic enforcement",
+      "A case heard only by grand juries"
+    ]
+  },
+  {
+    "question": "What distinguishes a criminal case from a civil case?",
+    "correct": "Criminal cases deal with violations of law punishable by fines or jail",
+    "answers": [
+      "Civil cases involve prison sentences",
+      "Criminal cases involve individuals suing each other",
+      "Criminal cases deal with violations of law punishable by fines or jail",
+      "Civil cases are decided by police officers"
+    ]
+  },
+  {
+    "question": "What is the role of the sheriff in a Texas county?",
+    "correct": "Enforcing laws and managing the county jail",
+    "answers": [
+      "Presiding over the school board",
+      "Approving municipal bonds",
+      "Enforcing laws and managing the county jail",
+      "Issuing business licenses"
+    ]
+  },
+  {
+    "question": "Who is responsible for registering voters in Texas counties?",
+    "correct": "Tax assessor-collector",
+    "answers": [
+      "City manager",
+      "County sheriff",
+      "Tax assessor-collector",
+      "School board president"
+    ]
+  },
+  {
+    "question": "What is the function of a county auditor in Texas?",
+    "correct": "To oversee financial records and ensure proper use of public funds",
+    "answers": [
+      "To prosecute criminals",
+      "To oversee financial records and ensure proper use of public funds",
+      "To issue building permits",
+      "To manage elections"
+    ]
+  },
+  {
+    "question": "Which official is typically elected in a general election in Texas counties?",
+    "correct": "County judge",
+    "answers": [
+      "County judge",
+      "Federal circuit judge",
+      "City treasurer",
+      "Legislative intern"
+    ]
+  },
+  {
+    "question": "Why do local governments use planning departments?",
+    "correct": "To coordinate services and future development",
+    "answers": [
+      "To design school lunches",
+      "To coordinate services and future development",
+      "To monitor state highway patrol",
+      "To create polling questions"
+    ]
+  },
+  {
+    "question": "Why are open meetings important in local government?",
+    "correct": "They help maintain transparency and allow citizens to observe the process",
+    "answers": [
+      "They allow for budgeting without public input",
+      "They help maintain transparency and allow citizens to observe the process",
+      "They\u2019re used to discuss national defense",
+      "They allow officials to bypass ethics rules"
+    ]
+  },
+  {
+    "question": "What is the role of a city charter?",
+    "correct": "It sets the rules and framework for a home rule city\u2019s government",
+    "answers": [
+      "It sets the rules and framework for a home rule city\u2019s government",
+      "It elects judges to the Texas Supreme Court",
+      "It replaces state law in every case",
+      "It provides housing permits"
+    ]
+  },
+  {
+    "question": "What is one advantage of a single-member district system?",
+    "correct": "It ensures proportional representation of geographic areas",
+    "answers": [
+      "It reduces the number of candidates",
+      "It ensures proportional representation of geographic areas",
+      "It gives all power to the mayor",
+      "It eliminates diversity"
+    ]
+  },
+  {
+    "question": "What level of government most directly affects citizens\u2019 daily lives in Texas?",
+    "correct": "Local",
+    "answers": [
+      "National",
+      "State",
+      "Local",
+      "International"
+    ]
+  },
+  {
+    "question": "Why are counties referred to as \u201cadministrative arms of the state\u201d in Texas?",
+    "correct": "Because they carry out state laws and provide services locally",
+    "answers": [
+      "Because they enforce federal immigration policy",
+      "Because they carry out state laws and provide services locally",
+      "Because they regulate the U.S. military",
+      "Because they replace cities in rural areas"
+    ]
+  },
+  {
+    "question": "Which court often handles traffic violations and Class C misdemeanors?",
+    "correct": "Justice of the Peace",
+    "answers": [
+      "Justice of the Peace",
+      "District court",
+      "Federal court",
+      "Texas Supreme Court"
+    ]
+  },
+  {
+    "question": "How are school board members chosen in Texas?",
+    "correct": "Elected by local voters",
+    "answers": [
+      "Appointed by the governor",
+      "Appointed by the mayor",
+      "Elected by local voters",
+      "Selected by the superintendent"
+    ]
+  },
+  {
+    "question": "What is zoning in city government?",
+    "correct": "Dividing city land into sections for specific uses like residential or commercial",
+    "answers": [
+      "Setting property taxes",
+      "Dividing city land into sections for specific uses like residential or commercial",
+      "Approving utility bills",
+      "Managing voter districts"
+    ]
+  },
+  {
+    "question": "What does the city council typically do?",
+    "correct": "Passes local ordinances and sets city policies",
+    "answers": [
+      "Enforces court orders",
+      "Hires teachers directly",
+      "Passes local ordinances and sets city policies",
+      "Oversees state highways"
+    ]
+  },
+  {
+    "question": "What is a municipal ordinance?",
+    "correct": "A law passed by a city council that applies within city limits",
+    "answers": [
+      "A law passed by the federal government",
+      "A law passed by a city council that applies within city limits",
+      "A county rule on taxation",
+      "A civil court opinion"
+    ]
+  },
+  {
+    "question": "What is the function of the Texas Municipal League (TML)?",
+    "correct": "It provides support and advocacy for cities in Texas",
+    "answers": [
+      "It certifies local elections",
+      "It provides support and advocacy for cities in Texas",
+      "It appoints school board members",
+      "It operates regional courthouses"
+    ]
+  }
+];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function loadQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = '';
+      shuffle(quizData);
+
+      quizData.forEach((item, index) => {
+        shuffle(item.answers);
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+        qDiv.innerHTML = `<p><strong>${index + 1}. ${item.question}</strong></p>`;
+
+        const answersDiv = document.createElement('div');
+        answersDiv.className = 'answers';
+
+        item.answers.forEach(answer => {
+          answersDiv.innerHTML += `
+            <label>
+              <input type="radio" name="q${index}" value="${answer}"> ${answer}
+            </label>
+          `;
+        });
+
+        qDiv.appendChild(answersDiv);
+        container.appendChild(qDiv);
+      });
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      let score = 0;
+      let missed = [];
+
+      quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === item.correct) {
+          score++;
+        } else {
+          missed.push({ question: item.question, correct: item.correct });
+        }
+      });
+
+      let name = prompt("Enter your name:");
+      let quizName = "Chapter 11 - 30 Question Real Final";
+      let total = quizData.length;
+
+      const formData = new FormData();
+      formData.append("entry.501165056", name);
+      formData.append("entry.568812027", quizName);
+      formData.append("entry.1271212779", score);
+      formData.append("entry.41916079", total);
+
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
+
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
+
+      if (missed.length > 0) {
+        container.innerHTML += `<h3>You missed the following questions:</h3>`;
+        missed.forEach((item, i) => {
+          container.innerHTML += `
+            <div class="question">
+              <p><strong>${i + 1}. ${item.question}</strong></p>
+              <p class="correct-answer">Correct answer: ${item.correct}</p>
+            </div>
+          `;
+        });
+      } else {
+        container.innerHTML += `<p><strong>Perfect score! Great job!</strong></p>`;
+      }
+
+      document.getElementById('submitBtn').style.display = 'none';
+    });
+
+    window.onload = loadQuiz;
+  </script>
+</body>
+</html>
