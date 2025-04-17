@@ -378,6 +378,12 @@ console.log("Quiz Name:", quizName);
 console.log("Score:", score);
 console.log("Total Questions:", total);
 
+if (!name || score === null || total === null) {
+  alert("Something's missing: name or score or total is not defined.");
+  return;
+}
+
+      
 fetch("https://script.google.com/macros/s/AKfycbwA8-gsYG5QQ6WTLZ3y9VdkUYgwgrUOg2506vSP-lQtGD_0NCkB-LmRNhoBZ2W0-Lax/exec", {
   method: "POST",
   body: JSON.stringify({
@@ -393,6 +399,7 @@ fetch("https://script.google.com/macros/s/AKfycbwA8-gsYG5QQ6WTLZ3y9VdkUYgwgrUOg2
 
 console.log("Fetch sent");
 
+alert("Submission sent to Google Sheet!");
 
 
       
