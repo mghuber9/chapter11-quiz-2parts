@@ -423,10 +423,10 @@
       let total = quizData.length;
 
       const formData = new FormData();
-      formData.append("entry.589672365", name);
-      formData.append("entry.1886111673", quizName);
-      formData.append("entry.1377682006", score);
-      formData.append("entry.1780060173", total);
+      formData.append("entry.589672365", name);       // Student Name
+      formData.append("entry.1886111673", quizName);  // Quiz Title
+      formData.append("entry.1377682006", score);     // Score
+      formData.append("entry.1780060173", total);     // Total Questions
 
       fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
         method: "POST",
