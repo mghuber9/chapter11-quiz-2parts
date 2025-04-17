@@ -388,11 +388,21 @@ console.log("Quiz Name:", quizName);
 console.log("Score:", score);
 console.log("Total Questions:", total);
 
-fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+
+fetch("https://script.google.com/macros/s/PASTE_YOUR_URL_HERE/exec", {
   method: "POST",
-  mode: "no-cors",
-  body: formData
+  body: JSON.stringify({
+    name: name,
+    quiz: "Chapter 11 Quiz - Part A (30)",  // <-- or whatever label you want
+    score: score,
+    total: total
+  }),
+  headers: {
+    "Content-Type": "application/json"
+  }
 });
+
+      
 
 console.log("Fetch sent");
 
