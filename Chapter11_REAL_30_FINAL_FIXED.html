@@ -385,6 +385,11 @@ if (!name || score === null || total === null) {
   return;
 }
 
+      console.log("About to send data...");
+console.log("Name:", name);
+console.log("Score:", score);
+console.log("Total:", total);
+
       
 fetch("https://script.google.com/macros/s/AKfycbwA8-gsYG5QQ6WTLZ3y9VdkUYgwgrUOg2506vSP-lQtGD_0NCkB-LmRNhoBZ2W0-Lax/exec", {
   method: "POST",
