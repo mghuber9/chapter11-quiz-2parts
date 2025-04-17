@@ -418,15 +418,35 @@
         }
       });
 
+let name = prompt("Enter your name:");
+let quizName = "Chapter 11";
+let total = quizData.length;
+
+// Assume `score` is already defined from your quiz logic
+
+const formData = new FormData();
+formData.append("entry.310801143", name);         // ✅ Correct Student Name
+formData.append("entry.1353981266", quizName);    // ✅ Correct Quiz Name
+formData.append("entry.2126481175", score);       // ✅ Correct Score
+formData.append("entry.1147794060", total);       // ✅ Correct Total Questions
+
+fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
+  method: "POST",
+  mode: "no-cors",
+  body: formData
+});
+
       let name = prompt("Enter your name:");
-      let quizName = "Chapter 11 - 35 Question Final";
+      let quizName = "Chapter 11 (35)";
       let total = quizData.length;
 
+      // Assume `score` is already defined from your quiz logic
+
       const formData = new FormData();
-      formData.append("entry.501165056", name);
-      formData.append("entry.568812027", quizName);
-      formData.append("entry.1271212779", score);
-      formData.append("entry.41916079", total);
+      formData.append("entry.310801143", name);         // ✅ Correct Student Name
+      formData.append("entry.1353981266", quizName);    // ✅ Correct Quiz Name
+      formData.append("entry.2126481175", score);       // ✅ Correct Score
+      formData.append("entry.1147794060", total);       // ✅ Correct Total Questions
 
       fetch("https://docs.google.com/forms/d/e/1FAIpQLSfl-7E4VaNfTweeIgz0bPc8-bxbcpWHSqVK-pBPWrRZtzui9g/formResponse", {
         method: "POST",
@@ -434,6 +454,8 @@
         body: formData
       });
 
+      
+   
       const container = document.getElementById('quizContainer');
       container.innerHTML = `<h2>Your Score: ${score} / ${quizData.length}</h2>`;
 
